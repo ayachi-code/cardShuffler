@@ -38,7 +38,7 @@ class Cards {
         ~Cards() {delete[] cardsInDeck;};
         void printDeck() {
             for (int i = 0; i < amountOfCards; i++) {
-                std::cout << cardsInDeck[i].getNameOfCard() << "\t" << cardsInDeck[i].getTypeOfCard() << std::endl;
+                std::cout << cardsInDeck[i].getNameOfCard() << " " << cardsInDeck[i].getTypeOfCard() << std::endl;
             };  
         };
         Card getLastCard() {
@@ -51,8 +51,20 @@ class Cards {
             amountOfCards -= 1;
         };
         void shuffle () {
+            int cardsShuffled = 0;
+            Card* tempDeck = new Card[52];
+            std::unordered_set<int> usedNumbers;
             int randomNumber = rand() % 52;
-            std::cout << randomNumber << std::endl;
+            while (cardsShuffled != amountOfCards) {
+                if (usedNumbers.count(randomNumber) <= 0) {
+                    usedNumbers.insert(randomNumber);
+                    tempDeck[cardsShuffled] = cardsInDeck[randomNumber];
+                    cardsShuffled++;
+                };
+                randomNumber = rand() % 52;
+            };
+            delete[] cardsInDeck;
+            cardsInDeck = tempDeck;
         };
 };
 
@@ -60,6 +72,8 @@ int main(int argc, char const *argv[])
 {
     srand(time(0));
     Cards paket1;
+    // paket1.printDeck();
     paket1.shuffle();
+    paket1.printDeck();
     return 0;
 }
