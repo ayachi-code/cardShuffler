@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <random>
+#include <unordered_set>
 
 class Card {
     private:
@@ -48,13 +50,16 @@ class Cards {
             }
             amountOfCards -= 1;
         };
+        void shuffle () {
+            int randomNumber = rand() % 52;
+            std::cout << randomNumber << std::endl;
+        };
 };
 
 int main(int argc, char const *argv[])
 {
+    srand(time(0));
     Cards paket1;
-    Card lastCard = paket1.getLastCard();
-    paket1.pop();
-    Card lastCard2 = paket1.getLastCard();
+    paket1.shuffle();
     return 0;
 }
