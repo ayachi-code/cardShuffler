@@ -9,7 +9,7 @@ Cards::Cards() {
     capacity = 52;
     std::vector<std::string> nameOfCards = {"harten", "schoppen", "klaveren", "ruiten"};
     int cardCount = 0;
-    for (int i = 0; i < nameOfCards.size(); i++) {
+    for (int i = 0; i < 4; i++) {
         for (int j = 1; j < 14; j++) {
             cardsInDeck[cardCount] = Card(nameOfCards.at(i), j);
             cardCount++;
