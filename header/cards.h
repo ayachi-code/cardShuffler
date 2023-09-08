@@ -2,6 +2,7 @@
 #include <vector>
 #include <random>
 #include <unordered_set>
+#include <stack>
 
 class Card {
      private:
@@ -18,20 +19,12 @@ class Card {
 
 class Cards {
     private:
-        // Card* cardsInDeck;
-        int amountOfCards;
-        int capacity;
+        std::stack<Card> cards;
+        int amount;
     public:
-        Card* cardsInDeck;
-        int getAmountOfCards() {return amountOfCards;};
-        int getCapacity() {return capacity;};
         Cards();
-        ~Cards();
-        void clearDeck();
-        void printDeck();
+        Cards(bool empty);
+        void shuffle();
         Card top();
-        Cards& operator=(const Cards& rhs);
-        void pop();
-        void push(Card card);
-        void shuffle ();
-}; 
+        void push();
+};
