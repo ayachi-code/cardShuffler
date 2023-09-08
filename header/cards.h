@@ -18,14 +18,20 @@ class Card {
 
 class Cards {
     private:
-        Card* cardsInDeck;
+        // Card* cardsInDeck;
         int amountOfCards;
         int capacity;
     public:
+        Card* cardsInDeck;
+        int getAmountOfCards() {return amountOfCards;};
+        int getCapacity() {return capacity;};
         Cards();
         ~Cards();
+        void clearDeck();
         void printDeck();
-        Card getLastCard();
+        Card top();
+        Cards& operator=(const Cards& rhs);
         void pop();
+        void push(Card card);
         void shuffle ();
-};
+}; 

@@ -18,7 +18,10 @@ Cards::Cards() {
     amountOfCards = cardCount;
 };
 
-Card Cards::getLastCard() {
+Card Cards::top() {
+    if (amountOfCards == 0) {
+        return cardsInDeck[0];
+    };
     return cardsInDeck[amountOfCards-1];
 }
 
@@ -50,6 +53,15 @@ void Cards::shuffle() {
     };
     delete[] cardsInDeck;
     cardsInDeck = tempDeck;
+};
+
+ void Cards::clearDeck() {
+    amountOfCards = 0;
+ };
+
+void Cards::push(Card card) {
+    cardsInDeck[amountOfCards] = card;
+    amountOfCards++;
 };
 
 Cards::~Cards() {delete[] cardsInDeck;};
